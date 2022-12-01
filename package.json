@@ -1,0 +1,19 @@
+{
+  "name": "@meros/node-red-pid",
+  "version": "0.0.1",
+  "description": "A node-red pid node genereted by openai chat bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "node-red": {
+    "nodes": {
+      "node-red-pid": "node-red-pid.js"
+    }
+  },
+  "devDependencies": {
+    "mocha": "^10.1.0"
+  }
+}

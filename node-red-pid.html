@@ -1,0 +1,85 @@
+<!--
+  Declare the Node-RED node
+  The node has three configuration properties:
+    - target: The target value for the PID controller
+    - Kp: The proportional gain constant for the PID controller
+    - Ki: The integral gain constant for the PID controller
+    - Kd: The derivative gain constant for the PID controller
+-->
+<script type="text/javascript">
+  RED.nodes.registerType("node-red-pid", {
+    category: "function",
+    color: "#a6bbcf",
+    defaults: {
+      name: { value: "" },
+      target: { value: 0, validate: RED.validators.number() },
+      Kp: { value: 0, validate: RED.validators.number() },
+      Ki: { value: 0, validate: RED.validators.number() },
+      Kd: { value: 0, validate: RED.validators.number() },
+    },
+    inputs: 1,
+    outputs: 1,
+    label: function () {
+      return this.name || "node-red-pid";
+    },
+  });
+</script>
+
+<!--
+  Declare the Node-RED node editor
+  The node editor has three input fields for the configuration properties:
+    - target: The target value for the PID controller
+    - Kp: The proportional gain constant for the PID controller
+    - Ki: The integral gain constant for the PID controller
+    - Kd: The derivative gain constant for the PID controller
+-->
+<script type="text/html" data-template-name="node-red-pid">
+  <div class="form-row">
+    <label for="node-input-name">Name</label>
+    <input type="text" id="node-input-name" placeholder="PID" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-target">Target</label>
+    <input type="number" id="node-input-target" placeholder="0" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-Kp">Kp</label>
+    <input type="number" id="node-input-Kp" placeholder="0" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-Ki">Ki</label>
+    <input type="number" id="node-input-Ki" placeholder="0" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-Kd">Kd</label>
+    <input type="number" id="node-input-Kd" placeholder="0" />
+  </div>
+</script>
+
+<!-- Declare the help text for the node -->
+<script type="text/html" data-template-name="node-red-pid">
+  <h3>PID Node</h3>
+  <p>
+    The PID node uses a PID (proportional-integral-derivative) controller to
+    calculate an output value based on a target value and a current value.
+  </p>
+  <p>The node has the following configuration properties:</p>
+  <ul>
+    <li>
+      <strong>Name:</strong> The name of the node, which appears in the node
+      label.
+    </li>
+    <li><strong>Target:</strong> The target value for the PID controller.</li>
+    <li>
+      <strong>Kp:</strong> The proportional gain constant for the PID
+      controller.
+    </li>
+    <li>
+      <strong>Ki:</strong> The integral gain constant for the PID controller.
+    </li>
+    <li>
+      <strong>Kd:</strong> The derivative gain constant for the PID controller.
+    </li>
+  </ul>
+  <p>The node has one input and one output port.</p>
+</script>
