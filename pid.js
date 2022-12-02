@@ -55,7 +55,7 @@ class PID {
     }
 
     // Calculate output value
-    const output =
+    let output =
       this.Kp * this.error +
       this.Ki * this.integral +
       this.Kd * this.derivative;
