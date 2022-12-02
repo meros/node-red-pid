@@ -25,4 +25,4 @@ Node-RED node that uses a PID (proportional-integral-derivative) controller to c
 
 ## 📄 License
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for more details.
+This project is licensed under the ISC License. See [LICENSE](LICENSE) for more details.
