@@ -13,9 +13,11 @@ module.exports = function (RED) {
     const Kp = config.Kp;
     const Ki = config.Ki;
     const Kd = config.Kd;
+    const minOutput = config.minOutput;
+    const maxOutput = config.maxOutput;
 
     // Create PID object
-    const pid = new PID(Kp, Ki, Kd);
+    const pid = new PID(Kp, Ki, Kd, minOutput, maxOutput);
 
     // Node-RED input event handler
     node.on("input", function (msg) {
@@ -24,6 +26,9 @@ module.exports = function (RED) {
 
       // Run PID loop and get output value
       const output = pid.pidLoop(target, current);
+
+      // Clamp output value to specified range
+      output = pid.clampOutput(output);
 
       // Set output value in output message
       msg.payload = output;
