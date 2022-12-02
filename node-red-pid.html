@@ -1,10 +1,13 @@
 <!--
   Declare the Node-RED node
-  The node has three configuration properties:
+  The node has five configuration properties:
+    - name: The name of the node, which appears in the node label
     - target: The target value for the PID controller
     - Kp: The proportional gain constant for the PID controller
     - Ki: The integral gain constant for the PID controller
     - Kd: The derivative gain constant for the PID controller
+    - minOutput: The minimum output value allowed
+    - maxOutput: The maximum output value allowed
 -->
 <script type="text/javascript">
   RED.nodes.registerType("node-red-pid", {
@@ -16,6 +19,8 @@
       Kp: { value: 0, validate: RED.validators.number() },
       Ki: { value: 0, validate: RED.validators.number() },
       Kd: { value: 0, validate: RED.validators.number() },
+      minOutput: { value: 0, validate: RED.validators.number() },
+      maxOutput: { value: 0, validate: RED.validators.number() },
     },
     inputs: 1,
     outputs: 1,
@@ -27,11 +32,14 @@
 
 <!--
   Declare the Node-RED node editor
-  The node editor has three input fields for the configuration properties:
+  The node editor has five input fields for the configuration properties:
+    - name: The name of the node, which appears in the node label
     - target: The target value for the PID controller
     - Kp: The proportional gain constant for the PID controller
     - Ki: The integral gain constant for the PID controller
     - Kd: The derivative gain constant for the PID controller
+    - minOutput: The minimum output value allowed
+    - maxOutput: The maximum output value allowed
 -->
 <script type="text/html" data-template-name="node-red-pid">
   <div class="form-row">
@@ -54,32 +62,12 @@
     <label for="node-input-Kd">Kd</label>
     <input type="number" id="node-input-Kd" placeholder="0" />
   </div>
-</script>
-
-<!-- Declare the help text for the node -->
-<script type="text/html" data-template-name="node-red-pid">
-  <h3>PID Node</h3>
-  <p>
-    The PID node uses a PID (proportional-integral-derivative) controller to
-    calculate an output value based on a target value and a current value.
-  </p>
-  <p>The node has the following configuration properties:</p>
-  <ul>
-    <li>
-      <strong>Name:</strong> The name of the node, which appears in the node
-      label.
-    </li>
-    <li><strong>Target:</strong> The target value for the PID controller.</li>
-    <li>
-      <strong>Kp:</strong> The proportional gain constant for the PID
-      controller.
-    </li>
-    <li>
-      <strong>Ki:</strong> The integral gain constant for the PID controller.
-    </li>
-    <li>
-      <strong>Kd:</strong> The derivative gain constant for the PID controller.
-    </li>
-  </ul>
-  <p>The node has one input and one output port.</p>
+  <div class="form-row">
+    <label for="node-input-minOutput">minOutput</label>
+    <input type="number" id="node-input-minOutput" placeholder="0" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-maxOutput">maxOutput</label>
+    <input type="number" id="node-input-maxOutput" placeholder="0" />
+  </div>
 </script>
